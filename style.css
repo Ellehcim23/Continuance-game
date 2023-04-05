@@ -16,24 +16,24 @@ canvas {
   /* need background image */
   background-color: #222;
   width: 100%;
-  height: 100;
+  height: 110;
 }
 
 #container {
-    max-width: 60em;
+    max-width: 65em;
     background-color: burlywood;
     margin: 0 auto;
     padding: 1em;
     display: grid;
     grid-gap: 1em;
-    grid-template-rows: .25fr .5fr .25fr;
-    grid-template-columns: .25fr .5fr .25fr;
+    grid-template-rows: .20fr .6fr .20fr;
+    grid-template-columns: .20fr .6fr .20fr;
     grid-template-areas: "top-a top-a top-c"
                          "game game game"
-                         "b-left b-right b-right";
+                         "b-left b-middle b-right";
 }
 
-#top, #top-c, #b-left, #b-right {
+#top, #top-c, #b-left, #b-middle, #b-right {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -54,6 +54,9 @@ main {
 
 #b-left {
     grid-area: b-left;
+}
+#b-middle {
+    grid-area: b-middle;
 }
 
 #b-right {
