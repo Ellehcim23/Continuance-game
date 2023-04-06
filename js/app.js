@@ -1,7 +1,7 @@
 const game = document.getElementById('game');
 const score = document.getElementById('score');
 const lives = document.getElementById('lives');
-let timer = document.getElementById('timer'), secondsLeft = 45;
+let timer = document.getElementById('timer'), secondsLeft = 15;
 const instructions = document.getElementById('instructions');
 const ctx = game.getContext('2d');
 let mine1;
@@ -28,9 +28,14 @@ window.addEventListener('DOMContentLoaded', () => {
             timer.textContent = secondsLeft;
             secondsLeft -= 1
         }, 1000)
-
-
-    // const endGame = setInterval (setTimeout(runGame),1000);
+   
+   function stopGame() {
+    if(secondsLeft === 0){
+        clearInterval(runGame);
+        clearInterval(makeMines);
+    }
+   } 
+   const endGame = setInterval (stopGame, 15000);
 })
 
 document.addEventListener('keydown', moveSoldier);
@@ -107,6 +112,7 @@ function gameLoop() {
     mine1.render();
     mine2.alive = true
     mine2.render();
+
     // mine3.render();
     // mine4.render();
 }
@@ -114,11 +120,11 @@ function gameLoop() {
 function checkMine() {
     if (mine1.alive) {
         mine1.render();
-        let mine1Hit = detectHit(soldier, mine1);
+        let hit = detectHit(soldier, mine1);
     }
     if (mine2.alive) {
         mine2.render();
-        let mine2Hit = detectHit(soldier, mine2);
+        let hit = detectHit(soldier, mine2);
     }
 }
 
@@ -132,13 +138,12 @@ function detectHit(player, opponent) {
         player.x < opponent.x + opponent.width
     );
 
-    if (hitTest) {
-        let soldierLives = Number(lives.textContent) - 1;
-        lives.textContent = soldierLives;
-        if (soldierLives === 0) {
-            soldier.alive = false
-            //     // const endGame = setInterval(clearInterval(runGame), 10000);
 
+    if (hitTest) {
+        let livesRemaining = Number(lives.textContent) - 1;
+        lives.textContent = livesRemaining;
+        if (livesRemaining == 0) {
+            ctx.clearRect(0, 0, game.width, game.height);
         }
         // let finalScore = newScore + 0
         // pop up on screen that game is over and show score
@@ -146,6 +151,7 @@ function detectHit(player, opponent) {
         //     let newScore = Number(score.textContent) + 1; // if the timer is 0 set soldier alive to false. 
         //     score.textContent = newScore;
     }
-    return spawnMine(), spawnMine2();
-   
+    spawnMine(),
+        spawnMine2();
+
 }
