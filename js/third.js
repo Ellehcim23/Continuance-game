@@ -3,6 +3,7 @@ const lives = document.getElementById('lives');
 let timer = document.getElementById('timer');
 let secondsLeft = 15;
 const instructions = document.getElementById('instructions');
+const startButton = document.getElementById('start');
 const ctx = game.getContext('2d');
 let mines = [];
 let soldier;
@@ -30,7 +31,10 @@ window.addEventListener('DOMContentLoaded', () => {
     let mine = new Mine(randomX, randomY, randomColor, 25, 25);
     mines.push(mine);
   }
-
+  instructions.addEventListener('click', function(){
+    alert('Press "W" or "↑" to move up '+ ' Press "A" or "←" to move left ' + ' Press "S" or "↓" to move down '+' Press "D" or "→" to move right')})
+  startButton.addEventListener('click', function() {
+  
   runGame = setInterval(gameLoop, 60);
   
   respawnMines = setInterval(() => {
@@ -41,7 +45,6 @@ window.addEventListener('DOMContentLoaded', () => {
         // destroy mines and respawn
         mine.alive = false;
         respawnMine(mine);
-        score.textContent = parseInt(score.textContent) + 1
       }
     });
   }, 2000);
@@ -61,6 +64,7 @@ window.addEventListener('DOMContentLoaded', () => {
     }, 1000)
 
    endGame = setTimeout(stopGame, 15000);
+})
 });
 
 document.addEventListener('keydown', moveSoldier);
