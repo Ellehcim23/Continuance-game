@@ -30,19 +30,18 @@ window.addEventListener('DOMContentLoaded', () => {
     for (let i = 0; i < numOfMines; i++) {
         let randomX = Math.floor(Math.random() * (game.width - 25)) && !150;
         let randomY = Math.floor(Math.random() * (game.height - 25)) && !90;
-
         let randomWidth = Math.floor(Math.random() * 35) + 20;
         let randomHeight = Math.floor(Math.random() * 35) + 20;
-        function color() {
-            const red = Math.floor(Math.random() * 255);
-            const green = Math.floor(Math.random() * 50);
+        // function color() {
+        //     const red = Math.floor(Math.random() * 255);
+        //     const green = Math.floor(Math.random() * 50);
 
-            const blue = Math.floor(Math.random() * 255);
-            return `rgb(${red}, ${green}, ${blue})`;
-        }
+        //     const blue = Math.floor(Math.random() * 255);
+        //     return `rgb(${red}, ${green}, ${blue})`;
+        // }
         console.log(numOfMines)
 
-        let randomColor = color();
+        // let randomColor = color();
 
         // let mine = new Mine(randomX, randomY, randomMine, 25, 25);
         let mine = new Mine(randomX, randomY, randomMine, randomWidth, randomHeight);
@@ -113,9 +112,14 @@ class Soldier {
         this.width = width;
         this.height = height;
         this.alive = true;
+        this.rotate = 0;
 
         this.render = function () {
-            ctx.drawImage(this.image, this.x, this.y, this.width, this.height)
+            ctx.save()
+            ctx.translate(this.x + this.width / 2, this.y + this.height / 2);
+            ctx.rotate((this.rotate * Math.PI) / 180);
+            ctx.drawImage(this.image, -this.width / 2 , -this.height / 2, this.width, this.height)
+            ctx.restore()
         };
     }
 }
@@ -124,12 +128,16 @@ function moveSoldier(e) {
     console.log('movement: ', e.key);
     if (e.key === 'w' || e.key === 'ArrowUp') {
         soldier.y - 25 >= 0 ? (soldier.y -= 25) : null;
+        soldier.rotate = 180
     } else if (e.key === 's' || e.key === 'ArrowDown') {
         soldier.y + 25 <= game.height - soldier.height ? (soldier.y += 25) : null;
+        soldier.rotate = 0
     } else if (e.key === 'a' || e.key === 'ArrowLeft') {
         soldier.x - 25 >= 0 ? (soldier.x -= 25) : null;
+        soldier.rotate = 90 
     } else if (e.key === 'd' || e.key === 'ArrowRight') {
         soldier.x + 25 <= game.width - soldier.width ? (soldier.x += 25) : null;
+        soldier.rotate = -90
     }
 }
 

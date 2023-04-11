@@ -118,3 +118,7 @@ main {
 #b-right {
     grid-area: b-right;
 }
+
+.rotated {
+    transform: scaleX(-1);
+}
