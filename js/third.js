@@ -1,17 +1,17 @@
 const score = document.getElementById('score');
 const lives = document.getElementById('lives');
 let timer = document.getElementById('timer');
-let secondsLeft = 10;
+let secondsLeft = 15;
 const instructions = document.getElementById('instructions');
 const startButton = document.getElementById('start');
 // const hardButton = document.getElementById('hardMode');
 const futureSoldier = document.getElementById('soldier');
 const bomb = document.getElementById('bomb');
 const smlBomb = document.getElementById('small-bomb');
-const smlMine = document.getElementById('mine');
-console.log(bomb)
-const bombTypes = [bomb, smlBomb, smlMine]
-let randomIndex = Math.floor(Math.random() * (bombTypes.length - 1));
+const tMine = document.getElementById('t-mine');
+console.log(tMine)
+const bombTypes = [bomb,tMine, smlBomb]
+let randomIndex = Math.floor(Math.random() * (bombTypes.length));
 let randomMine = bombTypes[randomIndex];
 const ctx = game.getContext('2d');
 let mines = [];
