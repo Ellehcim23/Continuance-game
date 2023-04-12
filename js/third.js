@@ -1,10 +1,11 @@
+const game = document.getElementById('game');
 const score = document.getElementById('score');
 const lives = document.getElementById('lives');
 let timer = document.getElementById('timer');
-let secondsLeft = 15;
+let secondsLeft = 10;
 const instructions = document.getElementById('instructions');
 const startButton = document.getElementById('start');
-// const hardButton = document.getElementById('hardMode');
+// const gameAlert = document.querySelector('canvas');
 const futureSoldier = document.getElementById('soldier');
 const bomb = document.getElementById('bomb');
 const smlBomb = document.getElementById('small-bomb');
@@ -32,18 +33,7 @@ window.addEventListener('DOMContentLoaded', () => {
         let randomY = Math.floor(Math.random() * (game.height - 25)) && !90;
         let randomWidth = Math.floor(Math.random() * 35) + 20;
         let randomHeight = Math.floor(Math.random() * 35) + 20;
-        // function color() {
-        //     const red = Math.floor(Math.random() * 255);
-        //     const green = Math.floor(Math.random() * 50);
-
-        //     const blue = Math.floor(Math.random() * 255);
-        //     return `rgb(${red}, ${green}, ${blue})`;
-        // }
         console.log(numOfMines)
-
-        // let randomColor = color();
-
-        // let mine = new Mine(randomX, randomY, randomMine, 25, 25);
         let mine = new Mine(randomX, randomY, randomMine, randomWidth, randomHeight);
         mines.push(mine);
     }
@@ -80,7 +70,7 @@ window.addEventListener('DOMContentLoaded', () => {
             secondsLeft -= 1;
         }, 1000)
 
-        endGame = setTimeout(stopGame, 15000);
+        endGame = setTimeout(stopGame, 10000);
     })
 });
 
@@ -185,6 +175,15 @@ function detectHit(player, mine) {
         player.x < mine.x + mine.width + 10;
     return hit;
 }
+
+// function gameWonAlert() {
+//     const gameWon = document.createElement('h2');
+//     gameWon.setAttribute('id', 'win');
+//     gameWon.textContent = "You WIN!!";
+//     gameWon.style.backgroundColor('black');
+//     gameWon.style.textAlign('center');
+//     gameAlert.append(gameWon);
+// }
 
 function stopGame() {
     clearInterval(runGame);

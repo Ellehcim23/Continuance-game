@@ -37,3 +37,10 @@ describe('Mine class', function(){
         expect(typeof mine.alive).toBe('boolean');
     })
 })
+
+describe('detectHit', function() {
+    it('should return a boolean', function(){
+        let result = detectHit(soldier, Mine);
+        expect(typeof(result)).toBe('boolean')
+    })
+})

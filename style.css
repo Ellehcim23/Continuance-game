@@ -20,12 +20,8 @@ body {
 }
 h2 {
     font-family: 'Libre Barcode 39 Extended Text', cursive;
-    /* font-family: 'Major Mono Display', monospace; */
-    /* font-family: 'Megrim', cursive; */
-
     color: rgb(255, 255, 255);
     font-size: 55px;
-    /* box-shadow: 0px 0px 5px 5px rgb(0,0,0); */
     text-shadow: 1px 1px 10px whitesmoke
 }
 
