@@ -4,7 +4,7 @@
 
 Continuance is a simplistic game based on avoiding collision. The soldier(player) must navigate through the canvas and keep moving to avoid collision with the mines(computer). The caveat is the mines. Each time the game is started there is a random amount of mines. Each mine is a different size and in a different location. Every 1.5 seconds the mines will randomly spawn hence the requirment for the continuance of movement. 
 
-To play Continuance visit ...
+To play Continuance visit https://continuance-game.netlify.app/ 
 
 ## Process 
 
@@ -46,7 +46,7 @@ The game is won once the time limit reaches 0 and the player is still alive. The
 * Open the `Index.html` through your terminal
 * Play the game in your broswer!
 
-** Game can also be played at ...site link
+** Game can also be played at https://continuance-game.netlify.app/
 
 ## File Structure 
 This game uses the basis of a dungeon crawler and expands on that framework. 

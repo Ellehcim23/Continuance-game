@@ -44,3 +44,21 @@ describe('detectHit', function() {
         expect(typeof(result)).toBe('boolean')
     })
 })
+
+describe('moveSoldier', function() {
+    it('should move the soldier to the right when key is pressed ', function() {
+        const e = {key: 'd'};
+        moveSoldier(e);
+        expect(soldier.x).toBe(175);
+    })
+    it('should move the soldier to the left when key is pressed ', function() {
+        const e = {key: 'a'};
+        moveSoldier(e);
+        expect(soldier.x).toBe(150);
+    })
+    it('should move the soldier up when key is pressed ', function() {
+        const e = {key: 'w'};
+        moveSoldier(e);
+        expect(soldier.y).toBe(65);
+    })
+})
