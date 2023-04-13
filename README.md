@@ -58,7 +58,7 @@ Tests were also implemented for the possibility of furture enhancements.
 
 ### HTML
 
-The game is rendered in a canvas that is placed within a container. This container allows for structuring around the canvas element. Our main images are stored in the `imgContainer` and accessed when called in javascript.
+The game is rendered in a canvas that is placed within a container. This container allows for structuring around the canvas element. The main images are stored in the `imgContainer` and accessed when called in javascript.
 
 ```html
 <div class="imgContainer">
@@ -168,7 +168,7 @@ The game deployes 4 intervals for running the `gameLoop`, `respawnMines`, `start
 
 Conitnuance uses classes to render the characters in the canvas element. 
 
-** Note the `Soldier` class includes `ctx.translate` and `ctx.rotate` which when coupled with our `moveSoldier` fuction allows the soldier to rotate with a corresponding `keydown`.
+** Note the `Soldier` class includes `ctx.translate` and `ctx.rotate` which when coupled with the `moveSoldier` fuction allows the soldier to rotate with a corresponding `keydown`.
 
 ```javascript
 class Mine {
